@@ -10,6 +10,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import theme from './theme';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Navbar from 'Components/navbar/navbar';
+import { ProductPage } from 'Components/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     path: '/nav',
     element: <Navbar />,
   },
+  { path: '/productPage', element: <ProductPage /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
