@@ -15,8 +15,7 @@ export default function MonCompte() {
           borderRadius="20px"
           overflow="hidden"
           bgColor="#F6F6F6"
-          paddingTop="2%"
-          paddingBottom="2%"
+          padding="2%"
         >
           <Text fontSize="2xl">Mon Compte</Text>
           <Divider />

@@ -3,6 +3,7 @@ import { ProductCard } from './ProductCard';
 import Shape from '../assets/Shape';
 import WhiteLogo from '../assets/WhiteLogo';
 import { CardPanel } from './CardPanel';
+import { Box, Flex } from '@chakra-ui/react';
 
 interface CardData {
   articleName: string;
@@ -84,6 +85,16 @@ export function ProductPage() {
   };
 
   return (
+    // <Flex justifyContent={'space-around'}>
+    //   <Box
+    //     width="800px"
+    //     height="600px"
+    //     borderWidth="3px"
+    //     borderRadius="20px"
+    //     overflow="hidden"
+    //     bgColor="#F6F6F6"
+    //     padding="2%"
+    //   >
     <div className="page">
       <div className="shape-container">
         <Shape />
@@ -123,5 +134,7 @@ export function ProductPage() {
         </div>
       </div>
     </div>
+    //   </Box>
+    // </Flex>
   );
 }
