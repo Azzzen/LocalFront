@@ -2,6 +2,7 @@ import React from 'react';
 
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import '@fontsource/poppins';
 import reportWebVitals from './reportWebVitals';
 import AddArticle from './Components/AddArticlePage/AddArticle';
 import MonCompte from './Components/MonComptePage/MonCompte';
@@ -11,6 +12,8 @@ import theme from './theme';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Navbar from 'Components/navbar/navbar';
 import { ProductPage } from 'Components/ProductPage';
+import ConnexionPage from 'Components/Connexion/ConnexionPage';
+import Register from 'Components/Register';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +32,18 @@ const router = createBrowserRouter([
     path: '/nav',
     element: <Navbar />,
   },
-  { path: '/productPage', element: <ProductPage /> },
+  {
+    path: '/productPage',
+    element: <ProductPage />,
+  },
+  {
+    path: '/login',
+    element: <ConnexionPage />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

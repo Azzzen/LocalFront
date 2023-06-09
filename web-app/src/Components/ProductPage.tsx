@@ -3,7 +3,7 @@ import { ProductCard } from './ProductCard';
 import Shape from '../assets/Shape';
 import WhiteLogo from '../assets/WhiteLogo';
 import { CardPanel } from './CardPanel';
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 interface CardData {
   articleName: string;
@@ -100,32 +100,34 @@ export function ProductPage() {
         <Shape />
       </div>
       <div className="card-and-panel-container">
-        <div className="card-container">
-          {cardData.map((card, index) => (
-            <ProductCard
-              key={index}
-              articleName={card.articleName}
-              brand={card.brand}
-              picture={card.picture}
-              price={card.price}
-              score={card.score}
-              logo={card.logo}
-              isExpanded={index === openedCardIndex}
-              onClick={() => handleCardClick(index)}
-            />
-          ))}
-        </div>
-        <div className="card-panel">
-          {openedCardData && (
-            <CardPanel
-              environnementDescription={openedCardData.environnementDescription}
-              environnementScore={openedCardData.environnementScore}
-              ethicalDescription={openedCardData.ethicalDescription}
-              ethicalScore={openedCardData.ethicalScore}
-              brandDescription={openedCardData.brandDescription}
-            />
-          )}
-        </div>
+        <Flex>
+          <div className="card-container">
+            {cardData.map((card, index) => (
+              <ProductCard
+                key={index}
+                articleName={card.articleName}
+                brand={card.brand}
+                picture={card.picture}
+                price={card.price}
+                score={card.score}
+                logo={card.logo}
+                isExpanded={index === openedCardIndex}
+                onClick={() => handleCardClick(index)}
+              />
+            ))}
+          </div>
+          <div className="card-panel">
+            {openedCardData && (
+              <CardPanel
+                environnementDescription={openedCardData.environnementDescription}
+                environnementScore={openedCardData.environnementScore}
+                ethicalDescription={openedCardData.ethicalDescription}
+                ethicalScore={openedCardData.ethicalScore}
+                brandDescription={openedCardData.brandDescription}
+              />
+            )}
+          </div>
+        </Flex>
       </div>
       <div className="title-container">
         <h1 className="title">LocalShirt</h1>
