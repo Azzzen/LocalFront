@@ -18,7 +18,7 @@ import Register from 'Components/Register';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AddArticle />,
+    element: <ConnexionPage />,
   },
   {
     path: '/mon-compte',
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
     element: <ProductPage />,
   },
   {
-    path: '/login',
-    element: <ConnexionPage />,
+    path: '/addArticle',
+    element: <AddArticle />,
   },
   {
     path: '/register',
