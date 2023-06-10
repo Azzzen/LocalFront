@@ -6,9 +6,12 @@ import Composition from './Composition';
 import MonProduit from './MonProduit';
 import ParcoursFabrication from './ParcoursFabrication';
 import Description from './Description';
+import Navbar from 'Components/navbar/navbar';
+import BackgroundShapes from '../../assets/BackgroundShapes';
 export default function AddArticle() {
   return (
     <React.Fragment>
+      <Navbar />
       <Flex justifyContent={'space-around'}>
         <Box
           width="80%"

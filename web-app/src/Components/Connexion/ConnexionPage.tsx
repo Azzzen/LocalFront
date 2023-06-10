@@ -35,10 +35,12 @@ export default function ConnexionPage() {
             <Box margin={'2%'}>
               <LogoBanner />
             </Box>
-            <Text fontSize="xl">
-              Bienvenue, Veuillez vous connecter pour accéder à votre espace!
-            </Text>
-            <Divider />
+            <div>
+              <Text fontSize="xl">
+                Bienvenue, Veuillez vous connecter pour accéder à votre espace!
+              </Text>
+              <Divider />
+            </div>
             <Flex flexDirection={'row'} padding={'1%'}>
               <Flex paddingTop="5%" paddingBottom="2%">
                 <FormControl isRequired>

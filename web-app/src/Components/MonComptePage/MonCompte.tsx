@@ -5,9 +5,11 @@ import MonEntreprise from './MonEntreprise';
 import Adresse from './Adresse';
 import MesInfos from './MesInfos';
 import MotDePasse from './MotDePasse';
+import Navbar from 'Components/navbar/navbar';
 export default function MonCompte() {
   return (
     <React.Fragment>
+      <Navbar />
       <Flex justifyContent={'space-around'}>
         <Box
           width="80%"

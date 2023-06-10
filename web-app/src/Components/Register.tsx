@@ -48,26 +48,30 @@ export default function Register() {
               <LogoBanner />
             </Box>
             <Text fontSize="xl">Heureux de faire votre connaissance ! </Text>
-            <Text fontSize="xl">
-              Veuillez remplir ces champs afin de finaliser votre inscription{' '}
-            </Text>
-            <Divider />
-            <Flex flexDir={'column'}>
-              <Box
-                borderWidth="1px"
-                borderRadius="5px"
-                borderColor={'white.400'}
-                overflow="hidden"
-                bgColor={'white.200'}
-                padding="5%"
-              >
-                <Text fontSize="xl">Déjà un compte ?</Text>
-                <Divider />
-                <Text fontSize="xl" color="green.200">
-                  <a href="/login">Se Connecter</a>
-                </Text>
-              </Box>
-            </Flex>
+            <div>
+              <Text fontSize="xl">
+                Veuillez remplir ces champs afin de finaliser votre inscription
+              </Text>
+              <Divider />
+            </div>
+            <Box
+              borderWidth="1px"
+              borderRadius="5px"
+              borderColor={'white.400'}
+              overflow="hidden"
+              bgColor={'white.200'}
+              padding="5%"
+              width={'67%'}
+            >
+              <Text fontSize="xl">Déjà un compte ?</Text>
+              <Divider />
+              <Text fontSize="xl" color="green.200">
+                <a href="/login">Se Connecter</a>
+              </Text>
+            </Box>
+            {/* <Flex flexDir={'column'}>
+
+            </Flex> */}
             <Flex flexDirection={'row'} padding={'1%'}>
               <Flex paddingTop="5%" paddingBottom="2%" paddingRight={'2%'}>
                 <FormControl isRequired>
