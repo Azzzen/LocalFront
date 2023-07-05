@@ -1,6 +1,7 @@
 import { CloseIcon } from '@chakra-ui/icons';
 import {
   Button,
+  Divider,
   IconButton,
   Modal,
   ModalBody,
@@ -34,6 +35,7 @@ export default function DeleteModal({ articleId, setDelItemId }: Props) {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Etes-vous certain de vouloir effacer cet article ?</ModalHeader>
+          <Divider />
           <ModalCloseButton />
           <ModalBody>
             En cliquant sur le bouton ci-dessous, vous supprimerez définitivement cet article de

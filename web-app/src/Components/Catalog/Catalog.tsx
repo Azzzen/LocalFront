@@ -21,43 +21,43 @@ export default function Catalog() {
 
   const [items, setItems] = useState<Items[]>([
     {
-      title: 'vetement',
+      title: 'marinière homme',
       photo:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png',
+        'https://www.cherwood.fr/4614-thickbox_default/mariniere-homme-cherbourgeois-bien-ancre.jpg',
       id: '00000',
       price: 12.9,
       desc: 'vetement',
-      score: 50,
-      color: 'yellow',
-      lastbought: '010223',
-      lastshown: '010223',
-      lastclick: '010223',
+      score: 60,
+      color: '#C9C073',
+      lastbought: '3 mars 2023',
+      lastshown: '3 mars 2023',
+      lastclick: '3 mars 2023',
     },
     {
       title: 'vetement',
       photo:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png',
+        'https://www.cherwood.fr/4614-thickbox_default/mariniere-homme-cherbourgeois-bien-ancre.jpg',
       id: '00001',
       price: 15.9,
       desc: 'pantalon',
-      score: 50,
-      color: 'yellow',
-      lastbought: '010223',
-      lastshown: '010223',
-      lastclick: '010223',
+      score: 60,
+      color: '#C9C073',
+      lastbought: '3 mars 2023',
+      lastshown: '3 mars 2023',
+      lastclick: '3 mars 2023',
     },
     {
       title: 'vetement',
       photo:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png',
+        'https://www.cherwood.fr/4614-thickbox_default/mariniere-homme-cherbourgeois-bien-ancre.jpg',
       id: '00002',
       price: 12.9,
       desc: 'tshirt',
-      score: 50,
-      color: 'yellow',
-      lastbought: '010223',
-      lastshown: '010223',
-      lastclick: '010223',
+      score: 60,
+      color: '#C9C073',
+      lastbought: '3 mars 2023',
+      lastshown: '3 mars 2023',
+      lastclick: '3 mars 2023',
     },
   ]);
 
@@ -68,6 +68,7 @@ export default function Catalog() {
       setDelItemId('');
     }
   }, [delItemId]);
+
   return (
     <>
       {items.map((item) => (
