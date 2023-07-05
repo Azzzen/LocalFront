@@ -16,6 +16,7 @@ import ConnexionPage from 'Components/Connexion/ConnexionPage';
 import Register from 'Components/Register';
 import Catalog from 'Components/Catalog/Catalog';
 import SiteMap from 'Components/SiteMap';
+import LegalMentions from 'Components/LegalMentions';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: '/siteMap',
     element: <SiteMap />,
+  },
+  {
+    path: '/legalMentions',
+    element: <LegalMentions />,
   },
 ]);
 
