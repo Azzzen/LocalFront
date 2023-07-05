@@ -48,12 +48,15 @@ export default function SiteMap() {
           <Divider />
           <Text fontSize="lg" color="green.200">
             <a href="/register">Politique de confidentialité</a>
-            <Text fontSize="lg" color="green.200"></Text>
-            <a href="/register">Mentions légales</a> <Text fontSize="lg" color="green.200"></Text>
-            <a href="/register">Conditions générales d'utilisation</a>
-            <Text fontSize="lg" color="green.200"></Text>
+          </Text>
+          <Text fontSize="lg" color="green.200">
+            <a href="/legalMentions">Mentions légales</a>
+          </Text>
+          <Text fontSize="lg" color="green.200">
+            <a href="/cgu">Conditions générales d'utilisation</a>
+          </Text>
+          <Text fontSize="lg" color="green.200">
             <a href="/register">Conditions générales de vente</a>
-            <Text fontSize="lg" color="green.200"></Text>
           </Text>
         </Box>
       </VStack>
