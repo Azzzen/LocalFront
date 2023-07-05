@@ -15,6 +15,7 @@ import { ProductPage } from 'Components/ProductPage';
 import ConnexionPage from 'Components/Connexion/ConnexionPage';
 import Register from 'Components/Register';
 import Catalog from 'Components/Catalog/Catalog';
+import SiteMap from 'Components/SiteMap';
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,12 @@ const router = createBrowserRouter([
     path: '/catalog',
     element: <Catalog />,
   },
+  {
+    path: '/siteMap',
+    element: <SiteMap />,
+  },
 ]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
