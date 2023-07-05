@@ -14,6 +14,7 @@ import Navbar from 'Components/navbar/navbar';
 import { ProductPage } from 'Components/ProductPage';
 import ConnexionPage from 'Components/Connexion/ConnexionPage';
 import Register from 'Components/Register';
+import Catalog from 'Components/Catalog/Catalog';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/catalog',
+    element: <Catalog />,
   },
 ]);
 

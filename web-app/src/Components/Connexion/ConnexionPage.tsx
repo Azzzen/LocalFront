@@ -8,6 +8,7 @@ import {
   Flex,
   FormLabel,
   Input,
+  HStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import LogoBanner from '../LogoBanner';
@@ -42,14 +43,16 @@ export default function ConnexionPage() {
               <Divider />
             </div>
             <Flex flexDirection={'row'} padding={'1%'}>
-              <Flex paddingTop="5%" paddingBottom="2%">
-                <FormControl isRequired>
-                  <FormLabel>Email</FormLabel>
-                  <Input type="text" onChange={(e) => setEmail(e.currentTarget.value)} />
-                  <FormLabel>mot de passe</FormLabel>
-                  <Input type="text" onChange={(e) => setPassword(e.currentTarget.value)} />
-                </FormControl>
-              </Flex>
+              <HStack spacing={200}>
+                <Flex paddingTop="5%" paddingBottom="2%">
+                  <FormControl isRequired>
+                    <FormLabel>Email</FormLabel>
+                    <Input type="text" onChange={(e) => setEmail(e.currentTarget.value)} />
+                    <FormLabel>mot de passe</FormLabel>
+                    <Input type="text" onChange={(e) => setPassword(e.currentTarget.value)} />
+                  </FormControl>
+                </Flex>
+              </HStack>
               <Flex flexDir={'column'}>
                 <Box
                   borderWidth="1px"
