@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, VStack, Text } from '@chakra-ui/react';
+import { Box, Divider, VStack, Text } from '@chakra-ui/react';
 import React from 'react';
 import Navbar from './navbar/navbar';
 
@@ -6,7 +6,6 @@ export default function SiteMap() {
   return (
     <React.Fragment>
       <Navbar />
-      {/* <Flex justifyContent={'space-around'}> */}
       <VStack justifyContent={'space-around'}>
         <Text fontSize={'4xl'} color={'green.200'}>
           Plan du Site
@@ -47,7 +46,7 @@ export default function SiteMap() {
           <Text fontSize={'2xl'}>Informations légales</Text>
           <Divider />
           <Text fontSize="lg" color="green.200">
-            <a href="/register">Politique de confidentialité</a>
+            <a href="/confidentiality">Politique de confidentialité</a>
           </Text>
           <Text fontSize="lg" color="green.200">
             <a href="/legalMentions">Mentions légales</a>
@@ -56,11 +55,10 @@ export default function SiteMap() {
             <a href="/cgu">Conditions générales d'utilisation</a>
           </Text>
           <Text fontSize="lg" color="green.200">
-            <a href="/register">Conditions générales de vente</a>
+            <a href="/cgv">Conditions générales de vente</a>
           </Text>
         </Box>
       </VStack>
-      {/* </Flex> */}
     </React.Fragment>
   );
 }

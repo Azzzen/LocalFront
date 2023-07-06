@@ -18,6 +18,8 @@ import Catalog from 'Components/Catalog/Catalog';
 import SiteMap from 'Components/SiteMap';
 import LegalMentions from 'Components/LegalMentions';
 import CGU from 'Components/CGU';
+import Confidentiality from 'Components/Confidentiality';
+import CGV from 'Components/CGV';
 
 const router = createBrowserRouter([
   {
@@ -64,8 +66,15 @@ const router = createBrowserRouter([
     path: '/cgu',
     element: <CGU />,
   },
+  {
+    path: '/confidentiality',
+    element: <Confidentiality />,
+  },
+  {
+    path: '/cgv',
+    element: <CGV />,
+  },
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
