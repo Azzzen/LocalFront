@@ -20,6 +20,7 @@ import LegalMentions from 'Components/LegalMentions';
 import CGU from 'Components/CGU';
 import Confidentiality from 'Components/Confidentiality';
 import CGV from 'Components/CGV';
+import ContactPage from 'Components/ContactPage';
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
   {
     path: '/cgv',
     element: <CGV />,
+  },
+  {
+    path: '/contact',
+    element: <ContactPage />,
   },
 ]);
 

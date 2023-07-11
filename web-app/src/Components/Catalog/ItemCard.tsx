@@ -68,7 +68,7 @@ export default function ItemCard({
               <Text fontSize={'xs'}>{lastbought}</Text>
             </VStack>
             <VStack alignItems={'flex-start'}>
-            <Button>Modifier l'article</Button>
+              <Button>Modifier l'article</Button>
             </VStack>
           </HStack>
         </CardBody>
