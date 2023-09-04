@@ -2,6 +2,8 @@ import { Box, Button, Checkbox, Divider, Flex, FormLabel, Select, Stack } from '
 import { HStack, Input, Text, Textarea, VStack } from '@chakra-ui/react';
 import { Fragment, useState } from 'react';
 import emailjs from 'emailjs-com';
+import Navbar from './navbar/navbar';
+import LogoBanner from './LogoBanner';
 
 type FormValues = {
   name: string;
@@ -25,14 +27,13 @@ export default function ContactPage() {
   const [acheck, setACheck] = useState(true);
   const [showObjectInput, setshowObjectInput] = useState(false);
   const presetObjects = [
-    { option: 'objet 1' },
-    { option: 'objet 2' },
-    { option: 'objet 3' },
+    { option: 'Interêt pour un partenariat' },
+    { option: 'Informations quant au calcul du localscore' },
+    { option: 'Demande de devis' },
     { option: 'Autre' },
   ];
 
-  const onSubmit = async (data: FormValues) => {
-    const { name, email, object, message } = data;
+  const onSubmit = async () => {
     const status = acheck ? 'Particulier' : 'Professionnel';
     const serviceID: string = process.env.REACT_APP_SERVICE_ID ?? 'service_je9m2b5';
     const templateID: string = process.env.REACT_APP_TEMPLATE_ID ?? 'template_47awap6';
@@ -90,29 +91,37 @@ export default function ContactPage() {
           bgColor={'white.200'}
           paddingTop="2%"
           paddingBottom="2%"
+          marginTop={10}
         >
           <VStack>
+            <Box margin={'2%'}>
+              <LogoBanner />
+            </Box>
             <div>
-              <Text fontSize="xl">Formulaire de contact </Text>
               <Divider />
+              <Text fontSize="xl">Formulaire de contact </Text>
             </div>
             <Flex flexDirection={'row'} padding={'1%'}>
               <HStack spacing={200}>
                 <Flex paddingTop="5%" paddingBottom="2%">
                   <form>
-                    <FormLabel>Nom</FormLabel>
-                    <Input
-                      isInvalid={!validName}
-                      onChange={(e) => handleName(e.currentTarget.value)}
-                      type="text"
-                    />
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                      isInvalid={!validEmail}
-                      onChange={(e) => handleEmail(e.currentTarget.value)}
-                      type="email"
-                    />
-                    <Stack spacing={5} direction="row">
+                    <Box margin={10}>
+                      <FormLabel>Nom</FormLabel>
+                      <Input
+                        isInvalid={!validName}
+                        onChange={(e) => handleName(e.currentTarget.value)}
+                        type="text"
+                      />
+                    </Box>
+                    <Box margin={10}>
+                      <FormLabel>Email</FormLabel>
+                      <Input
+                        isInvalid={!validEmail}
+                        onChange={(e) => handleEmail(e.currentTarget.value)}
+                        type="email"
+                      />
+                    </Box>
+                    <Stack spacing={5} direction="row" margin={10}>
                       <Checkbox
                         isChecked={!acheck}
                         colorScheme="green"
@@ -123,40 +132,49 @@ export default function ContactPage() {
                         Je suis un professionnel
                       </Checkbox>
                     </Stack>
-                    <FormLabel>{!showObjectInput ? 'Objet du message' : ''} </FormLabel>
-                    <Select
-                      onChange={(e) => handleOptions(e.target.value)}
-                      placeholder="Selectionnez un objet"
-                    >
-                      {presetObjects.map((pObject, index) => (
-                        <option
-                          onChange={() => {
-                            handleOptions;
-                          }}
-                          key={index}
-                          value={pObject.option}
-                        >
-                          {pObject.option}
-                        </option>
-                      ))}
-                    </Select>
-                    {showObjectInput && (
-                      <Fragment>
-                        <FormLabel>Objet</FormLabel>
-                        <Input onChange={(e) => setObject(e.currentTarget.value)} type="text" />
-                      </Fragment>
-                    )}
-                    <FormLabel>Message</FormLabel>
-                    <Textarea
-                      isInvalid={!validMessage}
-                      onChange={(e) => handleMessage(e.currentTarget.value)}
-                    />
-                    <Button
-                      isDisabled={!validEmail || !validMessage || !validName}
-                      onClick={() => onSubmit({ name, email, object, message })}
-                    >
-                      Send
-                    </Button>
+                    <Box margin={10}>
+                      <FormLabel>Objet</FormLabel>
+
+                      {/* <FormLabel>{!showObjectInput ? 'Objet du message' : ''} </FormLabel> */}
+                      <Select
+                        onChange={(e) => handleOptions(e.target.value)}
+                        placeholder="Selectionnez un objet"
+                      >
+                        {presetObjects.map((pObject, index) => (
+                          <option
+                            onChange={() => {
+                              handleOptions;
+                            }}
+                            key={index}
+                            value={pObject.option}
+                          >
+                            {pObject.option}
+                          </option>
+                        ))}
+                      </Select>
+                      <Box margin={10}>
+                        {showObjectInput && (
+                          <Input onChange={(e) => setObject(e.currentTarget.value)} type="text" />
+                        )}
+                      </Box>
+                    </Box>
+                    <Box margin={10}>
+                      <FormLabel>Message</FormLabel>
+                      <Textarea
+                        isInvalid={!validMessage}
+                        onChange={(e) => handleMessage(e.currentTarget.value)}
+                      />
+                    </Box>
+                    <Box display={'flex'} margin={10}>
+                      <Button
+                        backgroundColor={'green.200'}
+                        color={'white'}
+                        isDisabled={!validEmail || !validMessage || !validName}
+                        onClick={() => onSubmit()}
+                      > 
+                        Send
+                      </Button>
+                    </Box>
                   </form>
                 </Flex>
               </HStack>

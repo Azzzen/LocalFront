@@ -12,8 +12,8 @@ const theme = extendTheme({
     xl: '25px',
     '2xl': '28px',
     '3xl': '30px',
-    '4xl': '50px',
-    '5xl': '48px',
+    '4xl': '48px',
+    '5xl': '50px',
     '6xl': '64px',
   },
   colors: {
