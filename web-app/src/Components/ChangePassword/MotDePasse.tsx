@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import LogoBanner from '../LogoBanner';
-export default function AddArticle() {
+export default function password() {
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
   const handleSubmit = (e: any) => {

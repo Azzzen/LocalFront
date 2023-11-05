@@ -15,7 +15,7 @@ export default function SearchBar({ SetsearchInput, searchInput }: Props) {
         borderRadius={'10'}
         width={'85'}
         onChange={(e) => {
-          SetsearchInput(e.target.value.toLowerCase());
+          SetsearchInput(e.target.value);
         }}
       />
     </InputGroup>

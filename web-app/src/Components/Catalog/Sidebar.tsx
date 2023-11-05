@@ -5,7 +5,7 @@ import SearchBar from './Searchbar';
 export default function Sidebar({ setFilter, setSearchInput, searchInput }: Props) {
   return (
     <Box backgroundColor={'white.300'} width={window.innerWidth / 4} height={window.innerHeight}>
-      <LogoBanner />
+      {/* <LogoBanner /> */}
       <VStack flexDir={'column'} justifyContent={'center'} width={'85%'} margin={'auto'}>
         <SearchBar SetsearchInput={setSearchInput} searchInput={searchInput} />
       </VStack>

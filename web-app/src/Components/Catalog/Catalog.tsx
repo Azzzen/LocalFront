@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import ItemCard from './ItemCard';
 import Sidebar from './Sidebar';
-import { Divider, HStack, Text } from '@chakra-ui/react';
+import { Box, Button, Divider, Flex, HStack, Text } from '@chakra-ui/react';
+import { AddIcon, SearchIcon } from '@chakra-ui/icons';
+import Navbar from 'Components/navbar/navbar';
 export type Items = {
   title: string;
   photo: string;
@@ -20,7 +22,7 @@ export default function Catalog() {
   const [delItemId, setDelItemId] = useState('');
   const [items, setItems] = useState<Items[]>([
     {
-      title: 'Robe femme',
+      title: 'robe femme',
       identification: 'dresses',
       photo:
         'https://img01.ztat.net/article/spp-media-p1/304abd6dbfd947f09e2df993acd09077/f0cc9468a38c433c9936d20c296adb08.jpg?imwidth=1800',
@@ -35,7 +37,7 @@ export default function Catalog() {
     },
     {
       title: 'vetement',
-      identification: 'tops',
+      identification: 'pants',
       photo:
         'https://www.cherwood.fr/4614-thickbox_default/mariniere-homme-cherbourgeois-bien-ancre.jpg',
       id: '00001',
@@ -75,11 +77,24 @@ export default function Catalog() {
 
   return (
     <>
+      <Navbar show={false} />
       <HStack>
         <Sidebar setFilter={setFilter} setSearchInput={setSearchInput} searchInput={searchInput} />
         <div>
           <Text fontSize={'5xl'}>{searchInput}</Text>
           <Divider />
+          <Box
+            display={'flex'}
+            justifyContent={'flex-end'}
+            marginBottom={'10px'}
+            marginTop={'10px'}
+          >
+            <a href="/addArticle">
+              <Button leftIcon={<AddIcon />} fontSize="lg" bgColor="green.200" color={'white'}>
+                Ajouter un article
+              </Button>
+            </a>
+          </Box>
           {items.map((item) => (
             <ItemCard
               filter={filter}

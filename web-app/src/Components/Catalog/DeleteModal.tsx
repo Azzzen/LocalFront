@@ -14,6 +14,19 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Dispatcher } from './ItemCard';
+
+// import { extendTheme } from '@chakra-ui/react'
+
+// const theme = extendTheme({
+//   components: {
+//     Modal: {
+//       baseStyle: {
+//         bg: 'white.500',
+//       },
+//     },
+//   },
+// })
+
 export default function DeleteModal({ articleId, setDelItemId }: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const deleteArticle = () => {
@@ -33,7 +46,7 @@ export default function DeleteModal({ articleId, setDelItemId }: Props) {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bgColor={'white.200'}>
           <ModalHeader>Etes-vous certain de vouloir effacer cet article ?</ModalHeader>
           <Divider />
           <ModalCloseButton />
