@@ -11,7 +11,7 @@ import BackgroundShapes from '../../assets/BackgroundShapes';
 export default function AddArticle() {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar show={true} />
       <Flex justifyContent={'space-around'}>
         <Box
           width="80%"

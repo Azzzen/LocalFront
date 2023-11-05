@@ -5,7 +5,7 @@ import Navbar from './navbar/navbar';
 export default function CGU() {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar show={true} />
       {/* <Flex justifyContent={'space-around'}> */}
       <VStack justifyContent={'space-around'}>
         <Text fontSize={'4xl'} color={'green.200'}>

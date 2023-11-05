@@ -4,12 +4,12 @@ import React from 'react';
 import MonEntreprise from './MonEntreprise';
 import Adresse from './Adresse';
 import MesInfos from './MesInfos';
-import MotDePasse from './MotDePasse';
+import MotDePasse from '../ChangePassword/MotDePasse';
 import Navbar from 'Components/navbar/navbar';
 export default function MonCompte() {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar show={true} />
       <Flex justifyContent={'space-around'}>
         <Box
           width="80%"

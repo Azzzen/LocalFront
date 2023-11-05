@@ -2,25 +2,38 @@ import { Button, Divider, Flex } from '@chakra-ui/react';
 import LogoBanner from 'Components/LogoBanner';
 import React from 'react';
 
-export default function Navbar() {
+export default function Navbar({ show }: Props) {
   return (
     <React.Fragment>
       <Flex direction={'row'} justifyContent={'space-between'}>
-        <LogoBanner />
+        {!show ? (
+          <div style={{ backgroundColor: '#EFEFEF', width: window.innerWidth / 4 }}>
+            <LogoBanner />
+          </div>
+        ) : (
+          <div style={{ width: window.innerWidth / 4 }}>
+            <LogoBanner />
+          </div>
+        )}
         <Flex alignItems={'center'}>
-          <Button bgColor="#99AF8C" width="sm" color="#E9E9E9">
-            <a href="/">Mon Catalogue</a>
-          </Button>{' '}
+          {show && (
+            <Button bgColor="#99AF8C" width="sm" color="#E9E9E9">
+              <a href="/catalog">Mon Catalogue</a>
+            </Button>
+          )}
           <Button variant={'ghost'}>
             <a href="/mon-compte">Mon Compte</a>
           </Button>
         </Flex>
       </Flex>
-      <Divider />
+      {/* <Divider /> */}
     </React.Fragment>
   );
 }
 
+type Props = {
+  show: boolean;
+};
 {
   /* export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();

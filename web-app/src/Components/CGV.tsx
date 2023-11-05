@@ -5,7 +5,7 @@ import Navbar from './navbar/navbar';
 export default function CGV() {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar show={true} />
       <VStack justifyContent={'space-around'}>
         <Text fontSize={'4xl'} color={'green.200'}>
           Conditions générales de vente

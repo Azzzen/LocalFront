@@ -5,7 +5,7 @@ import Navbar from './navbar/navbar';
 export default function SiteMap() {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar show={true} />
       <VStack justifyContent={'space-around'}>
         <Text fontSize={'4xl'} color={'green.200'}>
           Plan du Site
