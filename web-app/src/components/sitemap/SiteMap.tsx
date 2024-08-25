@@ -56,22 +56,22 @@ export default function SiteMap() {
             </Typography>
             <Divider variant="fullWidth" sx={{ border: '1px solid', borderColor: 'gray.main' }} />
             <LeftAlignedStack>
-              <LinkButton sx={{ marginTop: '3%' }} variant="text" href="/register">
+              <LinkButton sx={{ marginTop: '3%' }} variant="text">
                 Inscription
               </LinkButton>
-              <LinkButton variant="text" href="/login">
+              <LinkButton variant="text" >
                 Connexion
               </LinkButton>
-              <LinkButton variant="text" href="/forgotPasswordEmail">
+              <LinkButton variant="text" >
                 Reinitialiser mon mot de passe
               </LinkButton>
-              <LinkButton variant="text" href="/mon-compte">
+              <LinkButton variant="text">
                 Mon compte
               </LinkButton>
-              <LinkButton variant="text" href="/addArticle">
+              <LinkButton variant="text" >
                 Ajouter un article à mon catalogue
               </LinkButton>
-              <LinkButton variant="text" href="/catalog">
+              <LinkButton variant="text" >
                 Catalogue
               </LinkButton>
             </LeftAlignedStack>

@@ -4,7 +4,6 @@ import { useCookies } from 'react-cookie';
 import { Center } from "../../informationPage/Information";
 import localShirtFullLogoGreen from "../../assets/green_logo.svg";
 import whiteLogo from './../../assets/white_logo.svg';
-import AccountButton from "../myAccount/accountButton";
 
 export default function Navbar() {
     const [cookies, setCookie] = useCookies(['token', 'theme']);
