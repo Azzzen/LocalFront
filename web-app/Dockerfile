@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN yarn install
+RUN npm ci
 
 COPY . .
 
