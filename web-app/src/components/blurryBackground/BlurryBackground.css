@@ -1,0 +1,41 @@
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #EFEFEF;
+  z-index: -1;
+}
+
+.background-black {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #434242;
+  z-index: -1;
+}
+
+.top-ellipsis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40vw;
+  height: 100%;
+  background-image: url('../../../public/topLeftEllipsis4.svg');
+  background-size: cover;
+  z-index: -1;
+}
+
+.bottom-ellipsis {
+  position: fixed;
+  bottom: -20%;
+  right: -20%;
+  width: 40vw;
+  height: 100%;
+  background-image: url('../../../public/bottomRightEllipsis5.svg');
+  background-size: cover;
+  z-index: -1;
+}

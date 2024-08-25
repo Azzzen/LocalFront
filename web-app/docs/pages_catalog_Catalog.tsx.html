@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web-App Documentation pages/catalog/Catalog.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Localshirt Web-app Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/ErwanSimonetti/LocalShirto"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.notion.so/0d4551e8e0bf46d0949377e09a75ea0b?v=495390718b594a409ffc0a7b0d46505d"
+                        >
+                            Notion
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://linear.app/localshirt/team/SHIRT/all"
+                        >
+                            Linear
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="Catalog.html">Catalog</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>pages/catalog/Catalog.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import LeftPanel from './LeftPanel';
+import ItemCard from './ItemCard';
+import Divider from '@mui/material/Divider';
+import { Button } from '@mui/material';
+import { GreyButton } from '../../components/buttons/buttons';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { gql } from '@apollo/client';
+import client from '../../graphqlApollo';
+import { useCookies } from 'react-cookie';
+import { useState, useEffect } from 'react';
+import AccountButton from '../../components/myAccount/accountButton';
+
+export type Items = {
+  title: string;
+  photo: string;
+  id: string;
+  price: number;
+  desc: string;
+  score: number;
+  type: string;
+  redirectnumber: number;
+  lastshown: Date;
+  lastclick: Date;
+  ethicalscore: number;
+  ecologicalscore: number;
+
+};
+
+/**
+ * Catalog component. Displays all the articles available through different
+ * categories, and can redirect to the `Add Article` page.
+ *
+ * @component
+ */
+const Catalog = () => {
+
+  const [cookies] = useCookies(['token']);
+  const [itemList, setItemList] = useState&lt;Items[]>([]);
+  const [filteredItemList, setFilteredItemList] = useState&lt;Items[]>([]);
+  const [filtre, setFiltre] = React.useState('');
+
+
+  const qr = gql(`
+  query {
+    getArticlePartnerUserList {
+      status
+      content
+      articles {
+        id
+        name
+        brand
+        country {name}
+        transport {name}
+        material {name}
+        price
+        local_score
+        branddesc
+        image
+        type
+        ecological_score
+        ethical_score
+        redirectnumber
+        lastshown
+        lastclick
+      }
+    }
+  }
+  `);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const articles = await getArticles();
+        setItemList(articles);
+        setFilteredItemList(articles);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setFiltre(event.target.value);
+  };
+
+  const getArticles = async () => {
+    const data = await client.query({
+      query: qr, context: {
+        headers: {
+          authorization: "Bearer " + cookies.token,
+        },
+      }
+    });
+    const articles = data.data.getArticlePartnerUserList.articles;
+    const items = [];
+    for (const article of articles) {
+      const item: Items = {
+        title: article.name,
+        photo: article.image,
+        id: article.id,
+        price: article.price,
+        type: article.type,
+        desc: article.branddesc,
+        score: article.local_score,
+        ecologicalscore: article.ecological_score,
+        ethicalscore: article.ethical_score,
+        redirectnumber: article.redirectnumber,
+        lastshown: article.lastshown,
+        lastclick: article.lastclick
+      };
+      items.push(item);
+    }
+    return items;
+  };
+
+
+
+  const handleSearchChange = (searchQuery: string) => {
+
+    const filteredItems = searchQuery.trim() === ''
+      ? itemList
+      : itemList.filter((item) => {
+        return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+
+    setFilteredItemList(filteredItems);
+  };
+
+  const handleButtonClick = (category: string) => {
+    const filteredItems = itemList.filter((item) => {
+      return item.type.toLowerCase().includes(category.toLowerCase());
+    });
+    setFilteredItemList(filteredItems);
+
+  };
+
+  const addArticleRedirect = () => {
+    window.location.replace('/addArticle');
+  };
+
+  const dividerStyle = {
+    borderRight: '1px solid',
+    color: '#5E5E5E',
+  };
+
+  return (
+    &lt;>
+      &lt;LeftPanel onSearchChange={handleSearchChange} onButtonClick={handleButtonClick} />
+      &lt;Box sx={{
+        position: 'absolute',
+        top: '0',
+        left: '370px',
+        width: '1510px',
+        height: '100vh',
+      }}>
+        &lt;Box sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          width: '100%',
+          paddingTop: '15px'
+        }} >
+          &lt;Typography sx={{ fontSize: '50px', paddingBottom: '20px' }}>Catalogue&lt;/Typography>
+        &lt;AccountButton/>
+        &lt;/Box>
+        &lt;Divider orientation="horizontal" flexItem sx={dividerStyle} />
+
+        &lt;Box sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          width: '100%',
+          paddingTop: '15px'
+        }} >
+          &lt;Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', paddingTop: '10px', justifyContent: 'center' }}>
+            &lt;Typography sx={{ fontWeight: '600', fontSize: '20px' }}>Trier par &lt;/Typography>
+            &lt;FormControl sx={{ m: 1, minWidth: 120, bgcolor: '#C8C8C8', borderRadius: '10px', '.MuiOutlinedInput-notchedOutline': { border: 0 } }} size="small">
+              &lt;InputLabel id="item-card-filtre">Filtre&lt;/InputLabel>
+              &lt;Select
+                value={filtre}
+                onChange={handleChange}
+                autoWidth
+                label="Filtre"
+              >
+                &lt;MenuItem value="">
+                  &lt;em>Filtre&lt;/em>
+                &lt;/MenuItem>
+                &lt;MenuItem value={1}>Récent&lt;/MenuItem>
+                &lt;MenuItem value={2}>Ancient&lt;/MenuItem>
+              &lt;/Select>
+            &lt;/FormControl>
+          &lt;/Box >
+          &lt;Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', paddingTop: '15px', justifyContent: 'center' }}>
+            &lt;Button variant="contained" size="small" sx={{ ...GreyButton(), width: '150px', height: '50px' }} onClick={addArticleRedirect}>
+              Ajouter un article
+            &lt;/Button>
+          &lt;/Box>
+
+        &lt;/Box>
+        &lt;Box sx={{ display: 'flex', flexDirection: 'column', paddingTop: '50px', paddingLeft: '30px' }}>
+          {filteredItemList.map((item, index) => (
+            &lt;div key={item.id} style={{ marginBottom: index &lt; itemList.length - 1 ? '30px' : 0 }}>
+              &lt;ItemCard
+                key={item.id}
+                title={item.title}
+                type={item.type}
+                photo={item.photo}
+                id={item.id}
+                price={item.price}
+                desc={item.desc}
+                score={item.score}
+                ecologicalscore={item.ecologicalscore}
+                ethicalscore={item.ethicalscore}
+                redirectnumber={item.redirectnumber}
+                lastshown={item.lastshown}
+                lastclick={item.lastclick} />
+            &lt;/div>
+          ))}
+        &lt;/Box>
+      &lt;/Box>
+    &lt;/>
+  );
+};
+
+export default Catalog;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

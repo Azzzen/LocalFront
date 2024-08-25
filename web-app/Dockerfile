@@ -3,13 +3,13 @@
 # this step installs all the dependencies needed for the client app
 ###################
 
-FROM node:14-alpine AS development
+FROM node:16-alpine AS development
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN yarn install
 
 COPY . .
 
@@ -20,7 +20,7 @@ USER node
 # this step builds the app using the previous installed dependencies
 ###################
 
-FROM node:14-alpine AS build
+FROM node:16-alpinee AS build
 
 WORKDIR /usr/src/app
 
@@ -37,7 +37,7 @@ RUN npm run build
 # this step runs the app using the previous build
 ###################
 
-FROM node:14-alpine AS production
+FROM node:16-alpine AS production
 
 WORKDIR /usr/src/app
 

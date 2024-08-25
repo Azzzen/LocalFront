@@ -1,0 +1,20 @@
+{
+    "start": {
+      "message": "Que voulez-vous apprendre à utiliser ?",
+      "options": ["Créer un compte partenaire", "Réinitialiser mon mot de passe", "Ajouter un objet à mon catalogue"],
+      "path": "process_options"
+    },
+    "process_options": {
+      "responses": {
+        "Ajouter un objet à mon catalogue": "Depuis la page mon catalogue, cliquez sur 'Ajouter un article à mon catalogue'.\n\nRenseignez ensuite un maximum des champs proposés, sans oublier d'ajouter la photo de votre article, et cliquez sur le bouton 'Suivant'.\n\nVoilà, votre article est maintenant consultable par vous dans votre catalogue, et par les utilisateurs via l'extension Localshirt!",
+        "Créer un compte partenaire": "Depuis la page d'accueil, cliquez sur le bouton espace partenaire.\n\nSi vous n'avez pas déjà un compte sur la plateforme, cliquez sur le bouton Créer un compte qui vous portera sur la page de création de compte, sur laquelle il ne vous restera plus qu'à entrer vos informations, et cliquer sur le bouton s'inscrire.",
+        "Réinitialiser mon mot de passe": "Depuis la page d'accueil, cliquez sur le bouton espace partenaire.\n\nAu bas de la fenêtre il vous est proposé un lien 'mot de passe oublié' vers la page de réinitialisation de mot de passe.\n\nVous serez encouragé à entrer l'email utilisé lors de la création de votre compte. Une fois votre email renseigné, un mail vous sera envoyé pour réinitialiser votre mot de passe.\n\nVous n'avez plus qu'à suivre les instructions à l'écran!"
+      },
+      "default": "Option inconnue."
+    },
+    "loop": {
+      "message": "Que voulez-vous apprendre d'autre à utiliser ?",
+      "options": ["Créer un compte partenaire", "Réinitialiser mon mot de passe", "Ajouter un objet à mon catalogue"],
+      "path": "process_options"
+    }
+  }

@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web-App Documentation components/inputs/Text.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Localshirt Web-app Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/ErwanSimonetti/LocalShirto"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.notion.so/0d4551e8e0bf46d0949377e09a75ea0b?v=495390718b594a409ffc0a7b0d46505d"
+                        >
+                            Notion
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://linear.app/localshirt/team/SHIRT/all"
+                        >
+                            Linear
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="RadioButtonGroup.html">RadioButtonGroup</a></li></ul><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="RadioInput.html">RadioInput</a></li><li><a href="TextInput.html">TextInput</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Components</h3><ul><li><a href="EmailPage.html">EmailPage</a></li><li><a href="module-ContactPage.html">ContactPage</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/inputs/Text.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {createRef, RefObject, useEffect, useRef, useState} from "react";
+import './inputs.scss'
+
+/**
+ * A text component in the localshirt style
+ *
+ * @component
+ * @param {Object} props - The component contains multiple props to customize it
+ * @param {string} props.title - The title to be assigned to the Text
+ * @param {string} props.placeholder - The placeholder to be displayed on top of the Text
+ * @param {boolean} props.showContent - Whether or not to show the content
+ * @param {number} props.width - The width you wish to set the Text to
+ * @param {string} props.tag - The tag of the Text
+ * @param {HTMLInputElement} props.myRef - A reference to the Text component
+ * @returns {JSX.Element} The rendered Text component
+ */
+const TextInput = ({title = '', placeholder = '', showContent = true, width = 100, tag = '', myRef = createRef&lt;HTMLInputElement>()}) => {
+
+    return (&lt;div style={{width: `${width}%`}}>
+        {title &amp;&amp; &lt;h3>{title}&lt;/h3>}
+        &lt;input className={'generic-component'} type={showContent ? 'text' : 'password'} placeholder={placeholder} name={tag} ref={myRef} style={{width: `100%`}}/>
+    &lt;/div>);
+}
+
+export default TextInput;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+.localshirt-separator {
+    border-top: 3px solid #504D4D;
+    margin: 20px 0;
+    opacity: 0.5;
+  }
+
+  .localshirt-separator-underline {
+    border-top: 3px solid #504D4D;
+    margin-bottom: 20px;
+    opacity: 0.5;
+  }
+
+  .localshirt-separator::before,
+  .localshirt-separator::after {
+    content: "";
+    width: 10%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+  }
+  
+  .localshirt-separator::before {
+    left: 0;
+  }
+  
+  .localshirt-separator::after {
+    right: 0;
+  }

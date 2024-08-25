@@ -1,0 +1,43 @@
+.localshirt-select {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none;
+  }
+  
+  .localshirt-select:hover {
+    background-color: #45A049;
+  }
+  
+  .localshirt-select:active {
+    background-color: #4CAF50;
+  }
+  
+  .localshirt-select option:checked {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .localshirt-select option {
+    background-color: white;
+    color: #333;
+  }
+  
+  .localshirt-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  .localshirt-select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+  

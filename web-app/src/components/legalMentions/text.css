@@ -1,0 +1,50 @@
+.localshirt-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+  }
+
+  .localshirt-text-left {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    text-align: left;
+  }
+
+  .localshirt-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #99AF8C;
+    display: block;
+    text-decoration: none;
+  }
+
+.localshirt-title-green {
+  font-size: xx-large;
+  font-family: "Poppins";
+  color: #99AF8C;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.localshirt-title {
+  font-size: xx-large;
+  font-family: "Poppins";
+  color: #504D4D;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.localshirt-title-left {
+  font-size: x-large;
+  font-family: "Poppins";
+  color: #504D4D;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  display: inline-block;
+}

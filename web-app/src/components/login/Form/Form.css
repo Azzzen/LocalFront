@@ -1,0 +1,137 @@
+@media only screen and (max-width: 390px) {
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 337px;
+  }
+
+  .form-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+  }
+
+  .form-input {
+    height: 36px;
+    border-color: #c2c2c2;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 100%;
+    border: 1px solid #c2c2c2;
+    background-color: #f6f6f6;
+  }
+
+  .check-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .check {
+    margin-left: 25px;
+    height: 35px;
+    width: 35px;
+    accent-color: #c2c2c2;
+  }
+}
+
+@media only screen and (min-width: 391px) {
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+  }
+
+  .form-input {
+    height: 40px;
+    border-color: #c2c2c2;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 414px;
+    border: 1px solid #c2c2c2;
+    background-color: #f6f6f6;
+  }
+  .form-input-textarea {
+    height: 122px;
+    border-color: #c2c2c2;
+    border-radius: 5px;
+    border-width: 1px;
+    border: 1px solid #c2c2c2;
+    background-color: #f6f6f6;
+  }
+  .image-upload-frame {
+    display: flex;
+    flex-direction: column;
+  }
+  .image-upload-box {
+    height: 195px;
+    width: 195px;
+    border-color: black;
+    border-style: dashed;
+  }
+  .file-area {
+    position: relative;
+
+    input[type='file'] {
+      height: 40px;
+      border-color: #c2c2c2;
+      border-radius: 5px;
+      border-width: 1px;
+      width: 414px;
+      border: 1px solid #c2c2c2;
+      background-color: #f6f6f6;
+    }
+
+    .file-dummy {
+      width: 100%;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      text-align: center;
+      transition: background 0.3s ease-in-out;
+
+      .success {
+        display: none;
+      }
+    }
+
+    &:hover .file-dummy {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    input[type='file']:focus + .file-dummy {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    input[type='file']:valid + .file-dummy {
+      border-color: rgba(0, 255, 0, 0.4);
+      background-color: rgba(0, 255, 0, 0.3);
+
+      .success {
+        display: inline-block;
+      }
+      .default {
+        display: none;
+      }
+    }
+  }
+
+  .check-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .check {
+    margin-left: 25px;
+    height: 35px;
+    width: 35px;
+    accent-color: #c2c2c2;
+  }
+}

@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web-App Documentation components/contact/ContactPage.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Localshirt Web-app Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/ErwanSimonetti/LocalShirto"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.notion.so/0d4551e8e0bf46d0949377e09a75ea0b?v=495390718b594a409ffc0a7b0d46505d"
+                        >
+                            Notion
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://linear.app/localshirt/team/SHIRT/all"
+                        >
+                            Linear
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="RadioButtonGroup.html">RadioButtonGroup</a></li></ul><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="RadioInput.html">RadioInput</a></li><li><a href="TextInput.html">TextInput</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Components</h3><ul><li><a href="EmailPage.html">EmailPage</a></li><li><a href="module-ContactPage.html">ContactPage</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/contact/ContactPage.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Box, Button, Checkbox, Divider, Flex, FormLabel, Select, Stack } from '@chakra-ui/react';
+import { HStack, Input, Text, Textarea, VStack } from '@chakra-ui/react';
+import { Fragment, useState } from 'react';
+import emailjs from 'emailjs-com';
+import LogoBanner from '../../assets/LogoBanner';
+import Footer from '../../Footer';
+
+export interface ProcessEnv {
+  [key: string]: string | undefined;
+}
+
+/**
+ * The Contact Page
+ * 
+ * @category Pages
+ * @component
+ * @exports ContactPage
+ * @returns {JSX.Element} The rendered Contact page
+ */
+export default function ContactPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [object, setObject] = useState('');
+  const [message, setMessage] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
+  const [validName, setValidName] = useState(false);
+  const [validMessage, setValidMessage] = useState(false);
+  const [acheck, setACheck] = useState(true);
+  const [showObjectInput, setshowObjectInput] = useState(false);
+  const presetObjects = [
+    { option: 'Interêt pour un partenariat' },
+    { option: 'Informations quant au calcul du localscore' },
+    { option: 'Demande de devis' },
+    { option: 'Autre' },
+  ];
+
+  const onSubmit = async () => {
+    const status = acheck ? 'Particulier' : 'Professionnel';
+    const serviceID: string = process.env.REACT_APP_SERVICE_ID ?? 'service_je9m2b5';
+    const templateID: string = process.env.REACT_APP_TEMPLATE_ID ?? 'template_47awap6';
+    const userID: string = process.env.USER_ID ?? 'tnXfv8dmbjeWqQI5P';
+
+    try {
+      const templateParams = {
+        name,
+        email,
+        object,
+        message,
+        status,
+      };
+      await emailjs.send(serviceID, templateID, templateParams, userID);
+      window.location.reload();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleOptions = (currentOption: string) => {
+    currentOption === 'Autre' ? setshowObjectInput(true) : setshowObjectInput(false);
+    setObject(currentOption);
+  };
+
+  const handleEmail = (mail: string) => {
+    const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if (regex.test(mail)) {
+      setValidEmail(true);
+      setEmail(mail);
+    } else {
+      setValidEmail(false);
+    }
+  };
+  const handleName = (name: string) => {
+    if (name.length > 1) {
+      setValidName(true);
+      setName(name);
+    } else setValidName(false);
+  };
+  const handleMessage = (message: string) => {
+    if (message.length > 1) {
+      setValidMessage(true);
+      setMessage(message);
+    } else setValidMessage(false);
+  };
+  return (
+    &lt;Fragment>
+      &lt;Flex justifyContent={'space-around'}>
+        &lt;Box
+          width="80%"
+          borderWidth="3px"
+          borderRadius="20px"
+          overflow="hidden"
+          bgColor={'white.200'}
+          paddingTop="2%"
+          paddingBottom="2%"
+          marginTop={10}
+        >
+          &lt;VStack>
+            &lt;Box margin={'2%'}>
+              &lt;LogoBanner />
+            &lt;/Box>
+            &lt;div>
+              &lt;Divider />
+              &lt;Text fontSize="xl">Formulaire de contact &lt;/Text>
+            &lt;/div>
+            &lt;Flex flexDirection={'row'} padding={'1%'}>
+              &lt;HStack spacing={200}>
+                &lt;Flex paddingTop="5%" paddingBottom="2%">
+                  &lt;form>
+                    &lt;Box margin={10}>
+                      &lt;FormLabel>Nom&lt;/FormLabel>
+                      &lt;Input
+                        isInvalid={!validName}
+                        onChange={(e) => handleName(e.currentTarget.value)}
+                        type="text"
+                      />
+                    &lt;/Box>
+                    &lt;Box margin={10}>
+                      &lt;FormLabel>Email&lt;/FormLabel>
+                      &lt;Input
+                        isInvalid={!validEmail}
+                        onChange={(e) => handleEmail(e.currentTarget.value)}
+                        type="email"
+                      />
+                    &lt;/Box>
+                    &lt;Stack spacing={5} direction="row" margin={10}>
+                      &lt;Checkbox
+                        isChecked={!acheck}
+                        colorScheme="green"
+                        onChange={() => {
+                          setACheck(!acheck);
+                        }}
+                      >
+                        Je suis un professionnel
+                      &lt;/Checkbox>
+                    &lt;/Stack>
+                    &lt;Box margin={10}>
+                      &lt;FormLabel>Objet&lt;/FormLabel>
+                      &lt;Select
+                        onChange={(e) => handleOptions(e.target.value)}
+                        placeholder="Selectionnez un objet"
+                      >
+                        {presetObjects.map((pObject, index) => (
+                          &lt;option
+                            onChange={() => {
+                              handleOptions;
+                            }}
+                            key={index}
+                            value={pObject.option}
+                          >
+                            {pObject.option}
+                          &lt;/option>
+                        ))}
+                      &lt;/Select>
+                      &lt;Box margin={10}>
+                        {showObjectInput &amp;&amp; (
+                          &lt;Input onChange={(e) => setObject(e.currentTarget.value)} type="text" />
+                        )}
+                      &lt;/Box>
+                    &lt;/Box>
+                    &lt;Box margin={10}>
+                      &lt;FormLabel>Message&lt;/FormLabel>
+                      &lt;Textarea
+                        isInvalid={!validMessage}
+                        onChange={(e) => handleMessage(e.currentTarget.value)}
+                      />
+                    &lt;/Box>
+                    &lt;Box display={'flex'} margin={10}>
+                      &lt;Button
+                        backgroundColor={'green.200'}
+                        color={'white'}
+                        isDisabled={!validEmail || !validMessage || !validName}
+                        onClick={() => onSubmit()}
+                      > 
+                        Send
+                      &lt;/Button>
+                    &lt;/Box>
+                  &lt;/form>
+                &lt;/Flex>
+              &lt;/HStack>
+            &lt;/Flex>
+          &lt;/VStack>
+        &lt;/Box>
+      &lt;/Flex>
+      &lt;Footer/>
+    &lt;/Fragment>
+  );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

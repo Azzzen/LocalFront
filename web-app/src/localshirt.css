@@ -1,0 +1,28 @@
+.localshirt-footer {
+    background-color: #99af8c;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.localshirt-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.localshirt-footer-links li {
+    display: inline-block;
+    margin-right: 10px;
+    color:rgba(0, 0, 0, 0.1);
+}
+
+.localshirt-footer-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.localshirt-footer-links a:hover {
+    text-decoration: underline;
+}

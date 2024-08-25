@@ -1,0 +1,209 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web-App Documentation inputs/Radio.tsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Localshirt Web-app Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/ErwanSimonetti/LocalShirto"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.notion.so/0d4551e8e0bf46d0949377e09a75ea0b?v=495390718b594a409ffc0a7b0d46505d"
+                        >
+                            Notion
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://linear.app/localshirt/team/SHIRT/all"
+                        >
+                            Linear
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Button.html">Button</a></li><li><a href="RadioInput.html">RadioInput</a></li><li><a href="TextInput.html">TextInput</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>inputs/Radio.tsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {createRef, RefObject, useEffect, useState} from "react";
+import './inputs.scss'
+
+/**
+ * A radio input component in the localshirt style
+ *
+ * @component
+ * @param {Object} props - The component contains multiple props to customize it
+ * @param {string} props.title - The title to be assigned to the RadioInput
+ * @param {string} props.placeholder - The placeholder to be displayed on top of the RadioInput
+ * @param {Array} props.inputResponses - The accepted input responses
+ * @param {boolean} props.showContent - Whether or not to show the content
+ * @param {Array} props.positiveResponses - The responses considered as positives
+ * @param {string} props.tag - The tag of the RadioInput
+ * @param {number} props.width - The width you wish to set the RadioInput to
+ * @param {HTMLInputElement} props.myRef - A reference to the RadioInput component
+ * @returns {JSX.Element} The rendered RadioInput component
+ */
+const RadioInput = ({
+                        title = '',
+                        placeholder = '',
+                        inputResponses = ['true', 'false'],
+                        showContent = false,
+                        positiveResponses = ['true'],
+                        tag = '',
+                        width = 100,
+                        myRef = createRef&lt;HTMLInputElement>()
+                    }) => {
+    if (inputResponses.length &lt; 2) return &lt;>&lt;/>
+
+    const [selected, setSelected] = useState&lt;string>(inputResponses[0]);
+
+    return (&lt;div className={'radio-input-generic-component-zone'}>
+        {title &amp;&amp; &lt;h3>{title}&lt;/h3>}
+        &lt;div className={'radio-input-generic-component-list'} style={{width: `${width}%`}}>
+            {inputResponses.map(response => {
+                const valueWorth = positiveResponses.find(elem => elem == response) ? 'positive' : 'negative';
+                return &lt;div className={'radio-input-generic-component-individual'}>
+                    &lt;label
+                        className={positiveResponses.length > 0 &amp;&amp; inputResponses.find(elem => elem === positiveResponses[0]) ? valueWorth : ''}>
+                        {selected == response &amp;&amp; &lt;input className={'generic-component'} type={'radio'}
+                                                        placeholder={placeholder}
+                                                        name={tag + '-' + response + '-' + valueWorth}
+                                                        value={response}
+                                                        onChange={(selection) => setSelected(selection.currentTarget.value)}
+                                                        checked={selected === response}
+                                                        ref={myRef}
+                        />}
+                        {selected != response &amp;&amp; &lt;input className={'generic-component'} type={'radio'}
+                                                        placeholder={placeholder}
+                                                        name={tag + '-' + response + valueWorth}
+                                                        value={response}
+                                                        onChange={(selection) => setSelected(selection.currentTarget.value)}
+                                                        checked={selected === response}
+                        />}
+                        &lt;div className={'selector'}>
+                            {showContent &amp;&amp; &lt;p>{response}&lt;/p>}
+                        &lt;/div>
+                    &lt;/label>
+                &lt;/div>
+            })}
+        &lt;/div>
+    &lt;/div>);
+}
+
+export default RadioInput;</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
