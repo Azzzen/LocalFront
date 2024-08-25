@@ -8,7 +8,6 @@ import ScorePresentation from "./ScorePresentation";
 import PartnerList from "./PartnerList";
 import GroupMemberList from "./GroupMemberList";
 import BackgroundSlider from "./BackgroundSlider";
-import {makeStyles} from "@mui/styles";
 import Loading from '../components/loading/Loading';
 import LinkAnalyze from './LinkAnalize';
 import SlideDots from './slideDots';
@@ -27,7 +26,7 @@ export const SearchInputField = styled(TextField)(({theme}) => ({
 }));
 
 
-const useStyles = makeStyles(theme => ({
+/*const useStyles = makeStyles(theme => ({
     horizontalScrollContainer: {
         overflowX: "scroll",
         overflowY: "hidden",
@@ -37,7 +36,7 @@ const useStyles = makeStyles(theme => ({
         position: "relative",
         scrollBehavior: "smooth",
     }
-}));
+}));*/
 
 const InformationPage = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
